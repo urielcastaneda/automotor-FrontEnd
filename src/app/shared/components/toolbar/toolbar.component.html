@@ -1,0 +1,27 @@
+<mat-toolbar class="mat-toolbar">
+  <span (click)="redirectCard('home')" class="title-redirect" title="Lansanet">TEST</span>
+  <span class="spacer"></span>
+
+  <div *ngIf="verifyUser()" fxLayout="row" fxLayoutAlign="center">
+    <span class="user__name">{{ nameUser }}</span>
+  </div>
+  <div *ngIf="verifyUser()">
+    <button mat-icon-button [matMenuTriggerFor]="menu" matTooltip="Menú">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="redirectCard('admin-profiles')" *ngIf="true">
+        <mat-icon>manage_accounts</mat-icon>
+        <span>Administración</span>
+      </button>
+      <button mat-menu-item (click)="redirectCard('vehicle')" *ngIf="true">
+        <mat-icon>directions_car_filled</mat-icon>
+        <span>Mis Vehiculos</span>
+      </button>
+      <button mat-menu-item (click)="exit()">
+        <mat-icon>logout</mat-icon>
+        <span>Salir</span>
+      </button>
+    </mat-menu>
+  </div>
+</mat-toolbar>
